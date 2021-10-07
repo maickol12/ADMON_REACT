@@ -23,9 +23,8 @@ const LoginScreen = ({login,user,login_start}) => {
         const result = validateFields(values.fields);
         setValue({...values,errors:result});
         
-
-        if(!Object.keys(values.errors)){
-            login(values);
+        if(!Object.keys(values.errors).length){
+            login(values.fields);
         }
     }
 
@@ -40,9 +39,8 @@ const LoginScreen = ({login,user,login_start}) => {
 
         if(!values.username){
             errors.username_error = 'Campo Vacío';
-        }else{
-            errors.username_error = '';
         }
+
         if(!values.password){
             errors.password_error = 'Campo Vacío';
         }
@@ -87,7 +85,7 @@ const LoginScreen = ({login,user,login_start}) => {
                 { login_start && 
                     <div className="loader">
                         <svg className="circular">
-                        <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="5" stroke-miterlimit="10"></circle>
+                        <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="5" strokeMiterlimit="10"></circle>
                         </svg>
                     </div>
                 }
