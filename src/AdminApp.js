@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router,Route,Switch,Redirect } from 'react-router-dom';
-import { AuthRouter } from './components/routers/AuthRouter';
+import { AdminRouter } from './routers/AdminRouter';
+import { AuthRouter } from './routers/AuthRouter';
+
+
 
 export const AdminApp = () => {
     return (
@@ -8,6 +11,7 @@ export const AdminApp = () => {
            <div>
                <Switch>
                    <Route path='/auth/' component={ AuthRouter } />
+                   <Route path='/admin/' component={ AdminRouter } />
                    <Redirect to='/auth/login' />
                </Switch>
            </div>

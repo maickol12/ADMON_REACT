@@ -32,10 +32,12 @@ export default function reduxer(state = initialState,action){
 
 export const loginThunk = payload => async(dispatch) => {
     try{
+        console.log(payload);
         dispatch({
             type:SET_LOGIN_START,
             payload:true
         });
+        
         const url               = 'https://jsonplaceholder.typicode.com/users';
         const fetchResult       = await fetch(url);
         const json              = await fetchResult.json();
@@ -64,6 +66,6 @@ export const loginThunk = payload => async(dispatch) => {
         }, 5000);
        
     }catch(error){
-      
+      console.log(error);
     }
 }
