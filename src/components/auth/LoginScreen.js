@@ -1,4 +1,4 @@
-import React,{ useState,useEffect } from 'react';
+import React,{ useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loginThunk } from './../../reducers/Login';
 import { reduxForm,Field  } from 'redux-form';
@@ -30,9 +30,8 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 }
 
 const LoginScreen = (props) => {
+ 
     const { loginThunk,submitting, form,handleSubmit, LoginInfo:{ login_start,user,logged} } = props;
-
-
     const handleLogin = () => {
         const { login: { values } } = form;
         loginThunk(values);

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route,Redirect } from 'react-router'
 import LoginScreen from '../components/auth/LoginScreen'
+import { PostsScreen } from '../components/jsonplaceholder/PostsScreen'
 
 const checkSession = () => (
     ( sessionStorage.getItem('user') !== null )
@@ -16,6 +17,7 @@ export const AuthRouter = () => {
                     exact 
                     path='/auth/login/' 
                     component = { checkSession }/>
+
             </div>
         </div>
     )

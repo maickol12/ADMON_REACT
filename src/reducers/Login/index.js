@@ -26,9 +26,10 @@ export default function reduxer(state = initialState,action){
                 login_start:action.payload
             }
         case SET_LOGGIN_LOGOUT:
+           
             return {
                 ...state,
-                initialState
+                ...initialState
             }
         default:
             return state;
@@ -36,9 +37,12 @@ export default function reduxer(state = initialState,action){
 } 
 
 
-export const loggout = () => ({
+export const loggout = () => {
+    // alert("sddd")
+    return({
     type: SET_LOGGIN_LOGOUT
-});
+    })
+};
 
 
 export const loginThunk = payload => async(dispatch) => {
