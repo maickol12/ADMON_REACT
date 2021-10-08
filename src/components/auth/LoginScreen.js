@@ -2,6 +2,7 @@ import React,{ useState,useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loginThunk } from './../../reducers/Login';
 import { reduxForm,Field  } from 'redux-form';
+import { Redirect } from 'react-router';
 
 
 const handleRegister = (e) => {
@@ -29,7 +30,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 }
 
 const LoginScreen = (props) => {
-    const { loginThunk,submitting, form,handleSubmit, LoginInfo:{ login_start,user} } = props;
+    const { loginThunk,submitting, form,handleSubmit, LoginInfo:{ login_start,user,logged} } = props;
 
 
     const handleLogin = () => {
@@ -37,7 +38,7 @@ const LoginScreen = (props) => {
         loginThunk(values);
     }
 
-    
+
 
     useEffect(() => {
         if(Object.keys(user).length){
@@ -101,6 +102,8 @@ const LoginScreen = (props) => {
                     </input>
                </div>
             </form>
+
+            { logged && <Redirect to='/admin/dash' /> }
         </div>
     )
 };

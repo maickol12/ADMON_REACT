@@ -1,12 +1,12 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router'
-import { DashboardScreen } from '../components/ADMON/DashboardScreen'
+import DashboardScreen  from '../components/admin/DashboardScreen'
 
-const checkSession = () => (
-    ( sessionStorage.getItem('user') === null )
+const checkSession = () => {    
+    return ( sessionStorage.getItem('user') === null )
         ?<Redirect to='/auth/login' />
         : <DashboardScreen /> 
-)
+}
 
 export const AdminRouter = () => {
     return (

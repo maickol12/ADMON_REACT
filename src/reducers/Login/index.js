@@ -1,10 +1,12 @@
-const SET_USER          = "LOGIN/SETUSER";
-const SET_LOGIN_START   = "LOGIN/SET_LOGIN_START";
+const SET_USER              = "LOGIN/SETUSER";
+const SET_LOGIN_START       = "LOGIN/SET_LOGIN_START";
+const SET_LOGGIN_LOGOUT     = "LOGIN/SET_LOGOUT";
 
 
 
 const initialState = {
     login_start:false,
+    logged: false,
     user:{}
 };
 
@@ -23,11 +25,20 @@ export default function reduxer(state = initialState,action){
                 ...state,
                 login_start:action.payload
             }
+        case SET_LOGGIN_LOGOUT:
+            return {
+                ...state,
+                initialState
+            }
         default:
             return state;
     }
 } 
 
+
+export const loggout = () => ({
+    type: SET_LOGGIN_LOGOUT
+});
 
 
 export const loginThunk = payload => async(dispatch) => {
@@ -63,7 +74,7 @@ export const loginThunk = payload => async(dispatch) => {
                 type:SET_LOGIN_START,
                 paload:false
             });
-        }, 5000);
+        }, 2000);
        
     }catch(error){
       console.log(error);
